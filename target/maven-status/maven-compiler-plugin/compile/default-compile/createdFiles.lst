@@ -1,0 +1,15 @@
+dev/zomo/mcpremium/dataType/DiscordLiveInfo.class
+dev/zomo/mcpremium/dataType/WhoisCommandTabComplete.class
+dev/zomo/mcpremium/MCPLoadPlugin.class
+dev/zomo/mcpremium/dataType/DiscordLink.class
+dev/zomo/mcpremium/MCPDiscord.class
+dev/zomo/mcpremium/MCPAfk.class
+dev/zomo/mcpremium/MCPDiscordEvents.class
+dev/zomo/mcpremium/MCPPlaceholderAPI.class
+dev/zomo/mcpremium/MCPNick.class
+dev/zomo/mcpremium/dataType/NicknameData.class
+dev/zomo/mcpremium/MCPEvents.class
+dev/zomo/mcpremium/tasks/SleepTask.class
+dev/zomo/mcpremium/MCPConfig.class
+dev/zomo/mcpremium/tasks/AFKTask.class
+dev/zomo/mcpremium/MCP.class

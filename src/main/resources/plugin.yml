@@ -1,0 +1,75 @@
+main: dev.zomo.mcpremium.MCP
+version: ${project.version}
+name: Minecraft-Premium
+author: Ashley Zomo
+api-version: 1.16
+
+commands:
+  mcp:
+    description: General purpose MCP Command
+    permission: MCP.mcp
+    usage: /<command> reload [all|config|discord|nickname] OR /<command> whois [nick|user|uuid] <nickname|username|uuid> OR /<command> version
+  maintenance:
+    description: Starts a maintenance countdown
+    permission: MCP.mcp
+    usage: /<command> y <time>
+  mcpdump:
+    description: Dumps debug info
+    permission: MCP.mcpdump
+    usage: /<command>
+  afk:
+    description: AFK Command
+    permission: MCP.afk
+    usage: /<command>
+  fsleep:
+    description: Force sleep to occur
+    permission: MCP.fsleep
+    usage: /<command>
+  nick:
+    description: Nickname Command
+    permission: MCP.nick
+    usage: /<command> <name>
+  gabe:
+    description: Gabe Command
+    permission: MCP.gabe
+    usage: /<command>
+  
+
+permissions:
+  MCP.*:
+    description: Gives access to all Minecraft Premium commands
+    children:
+      MCP.mcp: true
+      MCP.mcpdump: true
+      MCP.afk: true
+      MCP.fsleep: true
+      MCP.nick: true
+      MCP.nick.color: true
+      MCP.nick.bypassMaxLength: true
+      MCP.gabe: true
+  MCP.mcp:
+    description: Allows access to /mcp and /maintenance commands
+    default: false
+  MCP.mcpdump:
+    description: Allows access to /mcpdump command
+    default: true
+  MCP.afk:
+    description: Allows access to /afk command
+    default: true
+  MCP.fsleep:
+    description: Allows access to /fsleep command
+    default: false
+  MCP.nick:
+    description: Allows access to /nick command
+    default: true
+  MCP.nick.color:
+    description: Allows access to colored nicknames
+    default: true
+  MCP.nick.bypassMaxLength:
+    description: Allows ability to bypass max nickname length
+    default: false
+  MCP.gabe:
+    description: Allows access to /gabe command
+    default: true
+
+softdepend: [PlaceholderAPI]

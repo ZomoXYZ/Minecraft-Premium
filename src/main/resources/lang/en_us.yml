@@ -1,0 +1,112 @@
+version: ${project.version} #dont change
+
+placeholderapi:
+  live: "&c&l[LIVE]&r"
+
+sleep:
+  sleepCheck: "&6[{sleeping}/{required}] players are asleep"
+  sleepPass:
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6Sleeping has been done..."
+    - "&6This sleep was brought to you by Ridge Wallet..."
+
+deathAchievement:
+  title: "L"
+  description: "{name} has died {deaths} time{deaths=1?:s}"
+
+event:
+  join: "&e{displayname} has joined the server"
+  leave: "&e{displayname} has left the server"
+
+afk:
+  onAfk: "&7* {displayname} &7is now AFK"
+  offAfk: "&7* {displayname} &7is no longer AFK"
+  isAfk: "&4&lAFK"
+
+commands:
+  error:
+    invalidArgs: "Invalid arguments"
+    noConsole: "This command cannot be run from the console"
+  mcp:
+    reload:
+      all: "All files have been reloaded"
+      config: "Config file has been reloaded"
+      discord: "Discord Link file has been reloaded"
+      lang: "Language file has been reloaded"
+      nickname: "Nickname file has been reloaded"
+    whois:
+      missing: "Player does not exist"
+      found:
+        chat: "&l{name}&r\n|Nickname: |{nickname?:&8[no nickname]&r}&o{nickname}&r\n|Linked to: |&o{username}#{userdiscriminator} |({userid})&r"
+        hover: "||||copy to clipboard|copy to clipboard"
+        click: ""
+    owhois:
+      missing: "Player does not exist"
+      found:
+        chat: "&l{name}&r\n|Nickname: |{nickname?:&8[no nickname]&r}&o{nickname}&r\n|Linked to: |&o{username}#{userdiscriminator} |({userid})&r"
+        hover: "||||copy to clipboard|copy to clipboard"
+        click: ""
+    version: "Version {version} for MC{mcversion}"
+  maintenance:
+    caution: "&6Type &4{command}&6 to {running?cancel:begin}"
+    title: "&6{time}"
+    subtitle: "&4before maintenance restart"
+    cancelled: "&6Maintenance has been cancelled"
+  nick:
+    set: "Your nickname has been set to {nick}"
+    clear: "Your nickname has been cleared"
+
+chat:
+  chat: "{live?&c&l[LIVE]&r }|<{prefix}{prefix? }|{displayname}|{suffix? }{suffix}> {message}"
+  hover: "{livetitle}||{name}|{translation}"
+  click: "{livelink}"
+
+translate:
+  response: "{from} -> {to}\n{message}"
+
+discord:
+  command: ".verify"
+  login: "Logged in to discord as `{clientname}#{clientdiscriminator}` ({clientid})"
+  presence: "{playercount} player{playercount=1?:s} online, {afkcount} player{afkcount=1?:s} afk"
+  kickReason:
+    notAllowed: "Please send &a{command} {logincode}&r in the channel &b#{channelname}&r"
+    notLoggedin: "This server has not finished logging in to Discord, please try again in a minute"
+    loginError: "This server encountered an error initializing its Discord bot, please contact the owner in order to fix this issue"
+    codegenError: "There was an error generating a login code, please try rejoining"
+    notInServer: "You must be in the Discord server"
+  verification:
+    invalidCode: "{usermention} the received code is invalid, please make sure you typed the code correctly"
+    verificationSucceed: "{usermention} you have now been verified and are able to join the server"
+    previouslyVerified: "{usermention} you have been verified previously"
+  chat:
+    onDiscord:
+      start: "**Server has started**"
+      stop: "**Server has closed**"
+      chat: "<{nickname?**}{nickname}{nickname?** }*{name}*> {message}"
+      chatWebhook: "{message}"
+      join: "**{displayname} has joined the server**"
+      leave: "**{displayname} has left the server**"
+      advancement: "*{displayname} has made the advancement **[{advancement}]***"
+      death: "*{displayname}* **{deathmessage}**"
+    onMinecraft:
+      chat:
+        chat: "&9&l[DISCORD]&r <|{userdisplayname}|> {message}"
+        hover: "|{username}#{userdiscriminator}|{translation}"
+        click: ""
+
+error:
+  nicknameCache: "Unable to cache nicknames"
+  discordCache: "Unable to cache discord connections"
+  discord:
+    badLogin: "Unable to log in to Discord"
+    missingToken: "Missing Discord token in config.yml"
+    badChannel: "Unable to find Discord channel"
+    missingChannel: "Missing Discord channel Id in config.yml"
+  unknownChatError: "&4Unknown error occurred with the chat system"

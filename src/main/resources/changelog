@@ -1,0 +1,139 @@
+ChangeLog
+
+vX.X.X (not functional)
+    - created a reload command to reload the entire plugin
+        - /mcp reload
+v1.8.2
+    - changed MCPPplayer.playerLookup method
+        - now supports quoting names
+            - "among us" / nick "among us"
+v1.8.1
+    - fixed the MCPPlayer.args2Player method
+        - it wouldn't work with an OfflinePlayer
+        - this fixes `/mcp whois` with offline players
+    - player lookup by discord id is now available
+        - /mcp whois discord 167336999844315137
+v1.8.0
+    - combined /mcp whois and /mcp owhois
+        - /mcp whois [uuid|nick|name] <uuid|nick|name>
+v1.7.3
+    - only Survival and Adventure modes count towards sleeping total
+v1.7.2
+    - chat messages can now optionally be logged
+    - added commands
+        - /fsleep
+        - /maintenance y <time> [<interval>]
+            - default interval is 1 of whatever the largest form of time is that can fit inside time
+            - example
+                - time: 2h (or 120m etc), interval: 1h
+            - if current time left < interval then interval will be halved 
+v1.7.1
+    - changed lang file
+v1.7.0
+    - changed how colors are processed for most templates involving a player
+v1.6.10
+    - added commands
+        - /mcp owhois <uuid> OR /mcp owhois nick <nick>
+            - whois for offline players 
+v1.6.9
+    - improved file size
+v1.6.8
+    - allowed secondary verification channels
+        - secondary verification channels act the same as the primary verification channel but can be a list and will not be displayed in the unverified disconnect message
+v1.6.7
+    - fixed bugs
+        - server would throw an error if there is no death stat stored
+        - nickname could be empty "&4 &r"
+v1.6.6
+    - fixed bugs
+        - can't disable verification and keep chat
+        - color doesn't show up in TAB plugin
+v1.6.5
+    - OOOHHH SOME GOOD UNIMPORTANT BUG FIXES
+        - /nick ashy&
+            - error oh no bad
+        - but now
+            - no more error
+        - but oh no i send chat and ashyr
+            - now ashy&
+                - i am ashy&
+v1.6.4
+    - allowed a proxy for discord webhooks
+v1.6.3
+    - changed minecraft chat messages on discord to be webhooks to look nicer
+        - completely optional
+v1.6.2
+    - added command to dump logs in case of logical mistake
+        - /mcpdump
+v1.6.1
+    - added more PlaceholderAPI support
+        - %mcp_live%
+v1.6.0
+    - added some (optional) PlaceholderAPI support
+        - useful for TAB plugin
+        - %mcp_displayname% and %mcp_afk%
+v1.5.0
+    - sleeping will cause the weather to clear
+        - as it should
+    - custom join/leave messages
+v1.4.3
+    - added translation to messages from discord
+        - i completely forgot to do this somehow
+v1.4.2
+    - added command
+        - /mcp version
+v1.4.1
+    - languages passed to the templates are now complete language names instead of language codes
+    - added more values to lang templates
+        - discord.chat.onDiscord.death
+            - "deathmessage" no longer includes name
+            - "deathmessagewhole" is death message with name
+v1.4.0
+    - added death count for the fake achievement when a player dies
+    - added whois command to get nickname info and discord info of player
+        - /mcp whois <nickname|username>
+    - fixed bugs
+        - "player joined" discord message would send before the nicknames were processed
+v1.3.0
+    - separated Lang and CommandSystem objects into their own Jar files to be used as dependencies
+    - added reload commands for the various files
+        - /mcp reload [<all|config|discord|nickname>]
+    - added version number to lang files so they can be automatically updated
+v1.2.3
+    - translation support for in game chat when you hover
+    - fixed bugs
+        - able to have a blank nickname if username set to "|"
+v1.2.2
+    - live links in minecraft chat actually works now
+    - fixed bugs
+        - discord chat and console log would be spammed whenever anyone got any (even invisible) advancement
+v1.2.1
+    - added chatting between discord and minecraft
+        - includes join/leave/die/advancements
+        - includes server start/stop
+    - fixed bugs
+        - player not removed from afk list if afk when leave
+v1.2.0
+    - changed chat
+        - hover over nickname to see real name
+        - "live" displayed next to name if live along with clickable link
+    - discord bot's presence displays info about the server
+    - fixed bugs
+        - nickname could be empty if the nickname was set to a color code only
+v1.1.0
+    - added discord verification
+v1.0.2
+    - fixed bugs
+        - the daylight acted sparratic when sleeping
+v1.0.1
+    - fixed bugs
+        - the chat spammed the sleep message
+v1.0.0
+    - initial
+
+todo
+- make /mcp whois command interactable with mouse
+- separate lang version from plugin version so the lang file doesnt reset every update
+
+- allow searching nickname with spaces to be put within quotes
+- send maintenance message in chat as well
