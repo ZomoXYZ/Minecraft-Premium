@@ -6,6 +6,8 @@ A collection of useful commands and tools for Minecraft servers
 
 [JDK](https://openjdk.java.net/install/) and [Maven](https://maven.apache.org/install.html) are required
 
+[MCLang](https://github.com/ZomoXYZ/MCLang) and [MCCommands](https://github.com/ZomoXYZ/MCCommands) are required libraries
+
 Running the `build.sh` file will both compile and install Minecraft-Premium into your local repository
 
 `build.sh` will also automatically create a server in your `~/.papermc/` directory
