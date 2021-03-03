@@ -1,5 +1,6 @@
 .vscode
-target
-pluginyml.json
+.settings
 .classpath
 .project
+target
+pluginyml.json
