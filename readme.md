@@ -26,6 +26,7 @@ In your `pom.xml`, add
         <groupId>dev.zomo</groupId>
         <artifactId>mcpremium</artifactId>
         <version>1.8.2</version>
+        <scope>provided</scope>
     </dependency>
 </dependencies>
 ```
