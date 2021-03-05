@@ -63,10 +63,5 @@ else
         run
     elif [ $argLower = "--norun" ] || [ $argLower = "-nr" ]; then
         compile
-    elif [ $argLower = "--upload" ] || [ $argLower = "-u" ]; then
-        echo michiru
-        scp ./target/$ARTIFACTID.jar michiru@54.39.7.66:~/projuicer/plugins/
-        #echo nebita
-        #scp ./target/$ARTIFACTID.jar nebita@45.76.3.246:~/land/plugins/
     fi
 fi
