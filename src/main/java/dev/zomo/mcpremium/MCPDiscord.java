@@ -33,6 +33,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.SelfUser;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
@@ -55,6 +56,7 @@ public class MCPDiscord {
     public static SelfUser client = null;
     public static TextChannel verificationChannel = null;
     public static TextChannel chatChannel = null;
+    public static Role verifiedRole = null;
 
     private static File discordFile = null;
     private static FileConfiguration discordCache = null;
@@ -286,6 +288,8 @@ public class MCPDiscord {
                     verificationChannel = jda.getTextChannelById(MCPConfig.discordVerificationChannel());
                 if (MCPConfig.discordChatChannel().length() > 0)
                     chatChannel = jda.getTextChannelById(MCPConfig.discordChatChannel());
+                if (MCPConfig.discordVerifiedRole().length() > 0)
+                    verifiedRole = jda.getRoleById(MCPConfig.discordVerifiedRole());
 
                 if (verificationChannel == null && MCPConfig.enableDiscordVerification()) {
                     MCP.logger.severe(MCP.lang.string("error.discord.badChannel"));
@@ -550,11 +554,31 @@ public class MCPDiscord {
     public static boolean canJoin(String uuid) {
 
         for (DiscordLink info : discordLinkInfo)
-            if (info.uuid.equals(uuid) && info.discordID.length() > 0)
+            if (info.uuid.equals(uuid) && info.discordID.length() > 0) {
+                giveRole(info.getMember());
                 return true;
+            }
 
         return false;
 
+    }
+
+    /**
+     * Ensures the given member has the configured verified role, will do nothing if
+     * configured role is empty
+     *
+     * @author Ashley Zomo
+     * @version 1.0.0
+     * @since 2021-03-04
+     * @param member discord member
+     */
+    private static void giveRole(Member member) {
+        if (verifiedRole != null && verificationChannel != null
+                && member.getGuild().getId().equals(verificationChannel.getGuild().getId())) {
+
+            member.getGuild().addRoleToMember(member, verifiedRole).queue();
+
+        }
     }
 
     /**
@@ -571,11 +595,12 @@ public class MCPDiscord {
     }
 
     /**
-     * something idk
+     * add verified user to file
      *
      * @author Ashley Zomo
      * @version 1.0.0
      * @since 2020-12-03
+     * @param info an instance of DiscordLink
      */
     public static void verifyUserFile(DiscordLink info) {
 
@@ -629,6 +654,7 @@ public class MCPDiscord {
                 } else {
                     info.setDiscordID(discordID);
                     verifyUserFile(info);
+                    giveRole(info.getMember());
                     return 1;
                 }
             }

@@ -3,10 +3,13 @@ ChangeLog
 vX.X.X (not functional)
     - created a reload command to reload the entire plugin
         - /mcp reload
+v1.8.3
+    - added support to give a discord role to people who have verified their minecraft account
 v1.8.2
     - changed MCPPplayer.playerLookup method
         - now supports quoting names
-            - "among us" / nick "among us"
+            - "among us"
+            - nick "among us"
 v1.8.1
     - fixed the MCPPlayer.args2Player method
         - it wouldn't work with an OfflinePlayer
@@ -132,8 +135,10 @@ v1.0.0
     - initial
 
 todo
+- make sure all methods are able to reload their variables when the config file updates
+- use idea from MCPConfig.ensureExists in MCLang so it can auto update the lang file
 - make /mcp whois command interactable with mouse
-- separate lang version from plugin version so the lang file doesnt reset every update
-
-- allow searching nickname with spaces to be put within quotes
 - send maintenance message in chat as well
+
+- future
+    - change MCCommands to have a GUI (chest/items interface)

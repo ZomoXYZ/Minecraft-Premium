@@ -7,6 +7,7 @@ import org.bukkit.OfflinePlayer;
 import dev.zomo.mcpremium.MCP;
 import dev.zomo.mcpremium.MCPConfig;
 import dev.zomo.mcpremium.MCPDiscord;
+import net.dv8tion.jda.api.entities.Member;
 
 public class DiscordLink {
 
@@ -20,6 +21,12 @@ public class DiscordLink {
         uuid = newUUID;
         offlinePlayer = MCP.plugin.getServer().getOfflinePlayer(UUID.fromString(newUUID));
         loginCode = newLoginCode;
+    }
+
+    public Member getMember() {
+        if (MCPDiscord.verificationChannel != null)
+            return MCPDiscord.verificationChannel.getGuild().getMemberById(discordID);
+        return null;
     }
 
     private String genCode(int depth) {

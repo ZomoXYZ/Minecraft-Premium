@@ -15,10 +15,6 @@ public class MCPDiscordEvents extends ListenerAdapter {
 
         if (id.equals(MCPDiscord.verificationChannel.getId()))
             return true;
-        
-        for (String vid : MCPConfig.discordVerificationChannelSecondary())
-            if (id.equals(vid))
-                return true;
 
         return false;
     }

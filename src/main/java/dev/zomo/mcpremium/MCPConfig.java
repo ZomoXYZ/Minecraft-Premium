@@ -1,14 +1,11 @@
 package dev.zomo.mcpremium;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class MCPConfig {
 
     private static FileConfiguration config = null;
+    //private static FileConfiguration configDefault = null;
     
     /**
      * Enables this module
@@ -18,8 +15,10 @@ public class MCPConfig {
      * @since 2020-12-03
      */
     public static void enable() {
-        MCP.plugin.saveDefaultConfig();
+        //MCP.plugin.saveDefaultConfig();
         config = MCP.plugin.getConfig();
+        //InputStream configDefaultStream = MCP.plugin.getResource("config.yml");
+        //configDefault = YamlConfiguration.loadConfiguration(new InputStreamReader(configDefaultStream));
     }
 
     /**
@@ -207,28 +206,6 @@ public class MCPConfig {
     }
 
     /**
-     * Gets the configured discord verification channel id
-     *
-     * @author Ashley Zomo
-     * @version 1.0.0
-     * @since 2020-12-03
-     * @return the configured discord verification channel id
-     */
-    public static List<String> discordVerificationChannelSecondary() {
-        List<String> values = new ArrayList<String>();
-
-        if (config != null) {
-            values = config.getStringList("discord.verificationChannelSecondary");
-
-            if (values.size() == 0) {
-                values = Arrays.asList(config.getString("discord.verificationChannelSecondary"));
-            }
-        }
-
-        return values;
-    }
-
-    /**
      * Gets the configured discord chat channel id
      *
      * @author Ashley Zomo
@@ -238,6 +215,18 @@ public class MCPConfig {
      */
     public static String discordChatChannel() {
         return config.getString("discord.chatChannel");
+    }
+
+    /**
+     * Gets the configured verified role id
+     *
+     * @author Ashley Zomo
+     * @version 1.0.0
+     * @since 2021-03-04
+     * @return the configured verified role id
+     */
+    public static String discordVerifiedRole() {
+        return config.getString("discord.verifiedRole");
     }
 
     /**
